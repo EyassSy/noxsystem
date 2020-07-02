@@ -6,14 +6,10 @@ const bot = new Client({
 const config = require('./config.json');
 const prefix = config.prefix;
 const token = config.token;
-const ms = require('ms')
+const ms = require('ms');
 bot.commands = new Collection();
 bot.aliases = new Collection();
 bot.catecories = fs.readdirSync("./commands/");
-const Timeout = new Set();
-["command"].forEach(handler=>{ 
-  require(`./handlers/${handler}`)(bot); 
-});
 
 bot.on('ready',()=>{ 
   bot.user.setActivity(`${prefix}help | Nox Bot!`,{type: "STREAMING", url: 'https://twitch.tv/idk'}) 
