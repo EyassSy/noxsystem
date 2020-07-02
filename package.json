@@ -1,0 +1,24 @@
+{
+  "name": "nox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "3vz",
+  "license": "ISC",
+  "dependencies": {
+    "ascii-table": "0.0.9",
+    "discord.js": "^12.2.0",
+    "fs": "0.0.1-security",
+    "guild": "^1.2.2",
+    "index.js": "0.0.3",
+    "moment": "^2.27.0",
+    "mongoose": "^5.9.20",
+    "ms": "^2.1.2",
+    "npm": "^6.14.5",
+    "qs": "^6.9.4",
+    "require": "^2.4.20"
+  }
+}
