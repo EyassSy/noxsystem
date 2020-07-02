@@ -40,4 +40,72 @@ bot.on("message", async message => {
   }
 })
 
+//////////////////////////////////////////////////////////////////
+
+client.on("message", message => {
+  if (message.author.bot) return;
+  if (message.content.startsWith(prefix + "help")) {
+    if (message.author.id == message.guild.ownerID) {
+      message.author
+        .send(
+          `   
+\`الاوامر العامة\` :postbox:
+\`${prefix}help\` : to see all the available commands
+\`${prefix}ping\` : shows the bot's ping
+
+
+
+\`الاوامر الإدارية\` :stars:
+\`${prefix}clear\` : deletes multiple messages
+\`${prefix}ban\` : to ban a member from the server
+\`${prefix}kick\` : to kick a member from the server
+
+  `
+        )
+        .then(e => {
+          message.react("✅");
+        })
+        .catch(() => {
+          return message.channel
+            .send(
+              "**You should allow to receive messages in private, so that I can send the commands to you**"
+            )
+            .then(() => {
+              return message.react("❌");
+            });
+        });
+    } else {
+      message.author
+        .send(
+          `   
+          \`الاوامر العامة\` :postbox:
+          \`${prefix}help\` : to see all the available commands
+          \`${prefix}ping\` : shows the bot's ping
+          
+          
+          
+          \`الاوامر الإدارية\` :stars:
+          \`${prefix}clear\` : deletes multiple messages
+          \`${prefix}ban\` : to ban a member from the server
+          \`${prefix}kick\` : to kick a member from the server
+        `
+          )
+        .then(e => {
+          message.react("✅");
+        })
+        .catch(() => {
+          return message.channel
+            .send(
+              "**You should allow to receive messages in private, so that I can send the commands to you**"
+            )
+            .then(() => {
+              return message.react("❌");
+            });
+        });
+    }
+  }
+});
+
+//////////////////////////////////////////////////////////////////
+
   bot.login(process.env.token);
