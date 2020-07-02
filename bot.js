@@ -10,8 +10,6 @@ const mongoose = require("mongoose");
 bot.prefix = prefix;
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
-bot.snipes = new Discord.Collection();
-bot.events = new Discord.Collection();
 bot.categories = fs.readdirSync("./commands/");
 const message = require("./events/guild/message");
 mongoose.connect(token.Mongo, {
