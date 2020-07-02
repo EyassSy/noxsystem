@@ -50,15 +50,15 @@ bot.on("message", message => {
         .send(
           `   
 \`General Commands\` 🌍
-\`${prefix}help\` : \`to see all the available commands\`
-\`${prefix}ping\` : \`shows the bot's ping\`
+\`${prefix}help\` \`:\ \`to see all the available commands\`
+\`${prefix}ping\` \`:\ \`shows the bot's ping\`
 
 
 
 \`Moderation Commands\` ✨
-\`${prefix}clear\` : \`deletes multiple messages\`
-\`${prefix}ban\` : \`to ban a member from the server\`
-\`${prefix}kick\` : \`to kick a member from the server\`
+\`${prefix}clear\` \`:\` \`deletes multiple messages\`
+\`${prefix}ban\` \`:\` \`to ban a member from the server\`
+\`${prefix}kick\` \`:\` \`to kick a member from the server\`
 
   `
         )
@@ -79,15 +79,15 @@ bot.on("message", message => {
         .send(
           `   
           \`General Commands\` 🌍
-          \`${prefix}help\` : \`to see all the available commands\`
-          \`${prefix}ping\` : \`shows the bot's ping\`
+          \`${prefix}help\` \`:\ \`to see all the available commands\`
+          \`${prefix}ping\` \`:\ \`shows the bot's ping\`
           
           
           
           \`Moderation Commands\` ✨
-          \`${prefix}clear\` : \`deletes multiple messages\`
-          \`${prefix}ban\` : \`to ban a member from the server\`
-          \`${prefix}kick\` : \`to kick a member from the server\`
+          \`${prefix}clear\` \`:\ \`deletes multiple messages\`
+          \`${prefix}ban\` \`:\ \`to ban a member from the server\`
+          \`${prefix}kick\` \`:\ \`to kick a member from the server\`
         `
           )
         .then(e => {
