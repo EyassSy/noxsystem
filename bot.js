@@ -10,6 +10,10 @@ const ms = require('ms');
 bot.commands = new Collection();
 bot.aliases = new Collection();
 bot.catecories = fs.readdirSync("./commands/");
+["command"].forEach(handler=>{ 
+  require(`./handlers/${handler}`)(bot); 
+});
+
 
 bot.on('ready',()=>{ 
   bot.user.setActivity(`${prefix}help | Nox Bot!`,{type: "STREAMING", url: 'https://twitch.tv/idk'}) 
