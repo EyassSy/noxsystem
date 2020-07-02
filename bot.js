@@ -1,4 +1,4 @@
-const {Collection, Discord, Message, Client} = require('discord.js');
+const {Collection, Discord, Message} = require('discord.js');
 const fs = require('fs');
 const bot = new Client({
    disableEveryone: true
