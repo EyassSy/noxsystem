@@ -1,8 +1,8 @@
 const {Collection, Discord, Message, Client} = require('discord.js');
 const fs = require('fs');
 const bot = new Client({
-   disableEveryone: true
-  }) 
+  disableEveryone: true
+}) 
 const config = require('./config.json');
 const prefix = config.prefix;
 const token = config.token;
@@ -13,8 +13,6 @@ bot.catecories = fs.readdirSync("./commands/");
 ["command"].forEach(handler=>{ 
   require(`./handlers/${handler}`)(bot); 
 });
-
-
 bot.on('ready',()=>{ 
   bot.user.setActivity(`${prefix}help | Nox Bot!`,{type: "STREAMING", url: 'https://twitch.tv/idk'}) 
   console.log(`Hello! ${bot.user.username} is now online!!`) 
@@ -30,10 +28,9 @@ bot.on('message', async message=>{
   if(cmd.length == 0 ) return; 
   const command = bot.commands.get(cmd) 
   if(!command) command = bot.commands.get(bot.aliases.get(cmd)); 
-  if(command){
-    command.run(bot,message,args)
-  }
+  if(command)
 
+    command.run(bot,message,args)
 })
 
 bot.on("message", async message => {
