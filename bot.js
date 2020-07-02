@@ -16,9 +16,7 @@ bot.catecories = fs.readdirSync("./commands/");
 bot.on('ready',()=>{ 
   bot.user.setActivity(`${prefix}help | Nox Bot!`,{type: "STREAMING", url: 'https://twitch.tv/idk'}) 
   console.log(`Hello! ${bot.user.username} is now online!!`) 
-}) 
-
-
+})
 
 bot.on("message", async message => {
 
