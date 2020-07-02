@@ -1,6 +1,6 @@
-const {Collection, Discord, Message, client} = require('discord.js');
+const {Collection, Discord, Message, Client} = require('discord.js');
 const fs = require('fs');
-const bot = new client({
+const bot = new Client({
   disableEveryone: true
 }) 
 const config = require('./config.json');
@@ -13,7 +13,7 @@ bot.catecories = fs.readdirSync("./commands/");
 ["command"].forEach(handler=>{ 
   require(`./handlers/${handler}`)(bot); 
 });
-bot.on('ready',()=>{ 
+bot.once('ready',()=>{ 
   bot.user.setActivity(`${prefix}help | Nox Bot!`,{type: "STREAMING", url: 'https://twitch.tv/idk'}) 
   console.log(`Hello! ${bot.user.username} is now online!!`) 
 }) 
