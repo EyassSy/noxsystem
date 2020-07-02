@@ -1,6 +1,6 @@
 const {Collection, Discord, Message, Client} = require('discord.js');
 const fs = require('fs');
-const bot = new Client({
+const bot = new client({
   disableEveryone: true
 }) 
 const config = require('./config.json');
