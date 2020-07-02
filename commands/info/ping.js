@@ -3,7 +3,6 @@ module.exports = {
   name: "ping",
   category: "info",
   description: "Returns latency and API ping",
-  timeout: 10000,
   
   run: async (bot, message, args) => {
     message.channel.send(`🏓 Pinging....`).then((msg) => {

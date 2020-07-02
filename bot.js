@@ -31,16 +31,6 @@ bot.on('message', async message=>{
   const command = bot.commands.get(cmd) 
   if(!command) command = bot.commands.get(bot.aliases.get(cmd)); 
   if(command){
-    if(command.timeout){
-      if(Timeout.has(`${message.author.id}${command.username}`)){
-        return message.reply(`You can only use that command every ${ms(command.timeout)}!`)
-      } else {
-          Timeout.add(`${message.author.id}${command.name}`)
-          setTimeout(() => {
-            Timeout.delete(`${message.author.id}${command.name}`)
-          }, command.timeout);
-      }
-    }
     command.run(bot,message,args)
   }
 
