@@ -1,5 +1,8 @@
 const Discord = require('discord.js');
-const bot = new Discord.Client();
+const bot = new client({
+  disableMentions: "everyone",
+  partials: ["REACTION"],
+});
 const fs = require('fs');
 
 
