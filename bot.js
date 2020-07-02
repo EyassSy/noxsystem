@@ -1,6 +1,6 @@
-const {Collection, Discord, Message, Client, bot} = require('discord.js');
+const {Collection, Discord, Message, Client} = require('discord.js');
 const fs = require('fs');
-const bot = new Discord.Client({
+const bot = new Client({
   disableMentions: "everyone",
   partials: ["REACTION"],
 });
