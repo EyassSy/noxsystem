@@ -47,27 +47,4 @@ bot.on('message', async message=>{
 
 })
 
-bot.on("message", async message => {
-
-  if(message.author.bot) return;
-  if(message.channel.type === 'dm') return;
-
-  if(message.content.startsWith(prefix)) {
-      const args = message.content.slice(prefix.length).trim().split(/ +/);
-
-      const command = args.shift().toLowerCase();
-
-      if(!bot.commands.has(command)) return;
-
-
-      try {
-          bot.commands.get(command).run(bot, message, args);
-
-      } catch (error){
-          console.error(error);
-      }
-  }
-})
-
-
   bot.login(process.env.token);
