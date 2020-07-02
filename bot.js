@@ -13,7 +13,6 @@ bot.aliases = new Discord.Collection();
 bot.snipes = new Discord.Collection();
 bot.events = new Discord.Collection();
 bot.categories = fs.readdirSync("./commands/");
-const token = require(`./token.json`);
 const message = require("./events/guild/message");
 mongoose.connect(token.Mongo, {
   useUnifiedTopology: true,
