@@ -1,8 +1,8 @@
-const Discord = require('discord.js');
-const bot = new client({
-  disableMentions: "everyone",
-  partials: ["REACTION"],
-});
+const {Collection, Discord, Message, Client} = require('discord.js');
+const fs = require('fs');
+const bot = new Client({
+   disableEveryone: true
+  }) 
 const fs = require('fs');
 
 
