@@ -3,8 +3,6 @@ const fs = require('fs');
 const bot = new Client({
    disableEveryone: true
   }) 
-const fs = require('fs');
-
 
 const config = require('./config.json');
 const prefix = config.prefix;
