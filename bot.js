@@ -54,8 +54,8 @@ bot.on("message", message => {
           `   
 \`General Commands\` 🌍
 
-${prefix}help :to see all the available commands
-${prefix}ping :shows the bot's ping
+${prefix}help : to see all the available commands
+${prefix}ping : shows the bot's ping
 
 
 
@@ -115,5 +115,7 @@ ${prefix}dm : to make me send a message to someone in privite
     }
   }
 });
+
+//////////////////////////////////////////////////////////////////
 
   bot.login(process.env.token);
