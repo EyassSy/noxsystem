@@ -163,7 +163,7 @@ bot.on('message', async message => {
       try {
         var connection = await voiceChannel.join()
         queueConstruct.connection = connection
-        play(message.guild, queueConstruct[0])
+        play(message.guild, queueConstruct.songs[0])
     } catch (error) {
         console.log(`There was an error connecting to the voice channel: ${error}`)
         queue.delete(message.guild.id)
@@ -211,7 +211,7 @@ ${serverQueue.songs.Map(song => `**-** ${song.title}`).join('\n')}
         return undefined
     } else if(message.content.startsWith(`${prefix}pause`)) {
       if(!message.member.voice.channel) return message.channel.send("You need to be in a voice channel to use the pause command")
-      if(!serverQueue) return message.channel.send("There is nothing plaing")
+      if(!serverQueue) return message.channel.send("There is nothing playing")
       if(!serverQueue.playing) return message.channel.send("The Music is already paused")
       serverQueue.playing = false
       serverQueue.connection.dispatcher.pause()
