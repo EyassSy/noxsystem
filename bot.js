@@ -1,8 +1,6 @@
 const {Collection, Discord, Message, Client} = require('discord.js');
 const fs = require('fs');
-const bot = new Client({
-  disableEveryone: true
-}) 
+const bot = new Client({ disableEveryone: true }) 
 const config = require('./config.json');
 const prefix = config.prefix;
 const token = config.token;
@@ -10,6 +8,7 @@ const ytdl = require('ytdl-core')
 const ms = require('ms');
 const { connect } = require('http2');
 const { connection } = require('mongoose');
+const { error } = require('console');
 bot.commands = new Collection();
 bot.aliases = new Collection();
 bot.catecories = fs.readdirSync("./commands/");
@@ -124,6 +123,43 @@ ${prefix}poll : Create a simple yes or no poll
     }
   }
 });
+
+//////////////////////////////////////////////////////////////////
+
+client.on('message', async message => {
+  if(message.author.bot) return
+  if(!message.content.startsWith(prefix)) return
+
+  const args = message.content.substring(prefix.length).split(" ")
+
+  if(message.content.startsWith(`${prefix}play`)) {
+    const voiceChannel = message.member.voice.channel
+    if(!voiceChannel) return message.channel.send("You need to be in a voice channel to play music")
+    const permissions = voiceChannel.permissionsFor(message.client.user)
+    if(!permissions.has('CONNECT')) return message.channel.send("I don\'t have permissions to connect to the voice channel")
+    if(!permissions.has('SPEAK')) return message.channel.send("I don\'t have permissions to speak in the channel")
+
+    try {
+        var connection = await voiceChannel.join()
+    } catch (error) {
+        console.log(`There was an error connecting to the voice channel: ${error}`)
+        return message.channel.send(`There was an error connecting to the voice channel: ${error}`)
+    }
+    
+    const dispatcher = connection.play(ytdl(args[1]))
+    .on('finish', () => {
+      voiceChannel.leave()
+    })
+    .on('error', error => {
+      console.log(error)
+    })
+    dispatcher.setVolumeLogarithmic(5 / 5)
+  } else if (message.content.startsWith(`${prefix}stop`)) {
+    if(!message.member.voice.channel) return message.channel.send("You need to be in a voice channel to stop the music")
+    message.member.voice.channel.leave()
+    return undefined
+  }
+})
 
 //////////////////////////////////////////////////////////////////
 
