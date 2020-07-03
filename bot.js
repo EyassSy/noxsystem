@@ -126,7 +126,7 @@ ${prefix}poll : Create a simple yes or no poll
 
 //////////////////////////////////////////////////////////////////
 
-client.on('message', async message => {
+bot.on('message', async message => {
   if(message.author.bot) return
   if(!message.content.startsWith(prefix)) return
 
