@@ -1,10 +1,12 @@
 const {Collection, Discord, Message, Client, Util} = require('discord.js');
 const fs = require('fs');
 const bot = new Client({ disableEveryone: true }) 
+const youtube = new Youtube(process.env.GOOGLE_API_KEY)
 const config = require('./config.json');
 const prefix = config.prefix;
 const token = config.token;
 const ytdl = require('ytdl-core')
+const Youtube = require('simple-youtube-api')
 const queue = new Map()
 const ms = require('ms');
 const { connect } = require('http2');
@@ -71,6 +73,17 @@ ${prefix}dm : to make me send a message to someone in privite
 ${prefix}poll : Create a simple yes or no poll
 
 
+
+\`Music Commands\` 🎵
+
+${prefix}play : plays music
+${prefix}stop : stop playing music
+${prefix}skip : skips the current playing song
+${prefix}pause : pauses playing music
+${prefix}resume : resume playing music
+${prefix}volume : changes the music volume
+${prefix}np : shows the current playing song name
+
   `
         )
         .then(e => {
@@ -107,6 +120,24 @@ ${prefix}poll : Create a simple yes or no poll
           ${prefix}poll : Create a simple yes or no poll
 
 
+
+          \`Music Commands\` 🎵
+
+          ${prefix}play : plays music
+          ${prefix}stop : stop playing music
+          ${prefix}skip : skips the current playing song
+          ${prefix}pause : pauses playing music
+          ${prefix}resume : resume playing music
+          ${prefix}volume : changes the music volume
+          ${prefix}np : shows the current playing song name
+
+
+
+
+
+
+
+
         `
           )
         .then(e => {
@@ -132,6 +163,8 @@ bot.on('message', async message => {
   if(!message.content.startsWith(prefix)) return
 
   const args = message.content.substring(prefix.length).split(" ")
+  const searchString = args.slice(1).join(' ')
+  const url = args[1] ? args[1].replace(/<(.+)>/g, '$1') : ''
   const serverQueue = queue.get(message.guild.id)
 
   if(message.content.startsWith(`${prefix}play`)) {
@@ -141,10 +174,21 @@ bot.on('message', async message => {
     if(!permissions.has('CONNECT')) return message.channel.send("I don\'t have permissions to connect to the voice channel")
     if(!permissions.has('SPEAK')) return message.channel.send("I don\'t have permissions to speak in the channel")
 
-    const songInfo = await ytdl.getInfo(args[1])
+    try {
+      var video = await youtube.getVideoByID(url)
+    } catch {
+        try {
+          var videos = await youtube.searchVideos(searchString, 1)
+          var video = await youtube.getVideoByID(videos[0].id)
+        } catch {
+            return message.channel.send("I couldn\'t find any search results")
+        }
+    }
+
     const song = {
-      title: Util.escapeMarkdown(songInfo.title),
-      url: songInfo.video_url
+        id: video.id,
+        title: Util.escapeMarkdown(video.title),
+        url: `https://youtube.com/watch?v=${video.id}`
     }
 
     if(!serverQueue) {
