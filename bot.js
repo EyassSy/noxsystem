@@ -1,14 +1,12 @@
 const {Collection, Discord, Message, Client, Util} = require('discord.js');
 const fs = require('fs');
 const bot = new Client({ disableEveryone: true }) 
-const youtube = new YouTube(process.env.GOOGLE_API_KEY)
+const YouTube = require('simple-youtube-api')
 const config = require('./config.json');
 const prefix = config.prefix;
 const token = config.token;
 const ytdl = require('ytdl-core')
-
-const YouTube = require('simple-youtube-api')
-
+const youtube = new YouTube(process.env.GOOGLE_API_KEY)
 const queue = new Map()
 const ms = require('ms');
 const { connect } = require('http2');
