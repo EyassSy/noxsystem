@@ -68,6 +68,8 @@ ${prefix}clear : deletes multiple messages
 ${prefix}ban : to ban a member from the server
 ${prefix}kick : to kick a member from the server
 ${prefix}dm : to make me send a message to someone in privite
+${prefix}poll : Create a simple yes or no poll
+
 
   `
         )
@@ -102,6 +104,8 @@ ${prefix}dm : to make me send a message to someone in privite
           ${prefix}ban : to ban a member from the server
           ${prefix}kick : to kick a member from the server
           ${prefix}dm : to make me send a message to someone in privite
+          ${prefix}poll : Create a simple yes or no poll
+
 
         `
           )
