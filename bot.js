@@ -184,7 +184,7 @@ bot.on('message', async message => {
     return undefined
   } else if (message.content.startsWith(`${prefix}skip`)) {
     if(!message.member.voice.channel) return message.channel.send("You have to be in a voice channel to skip the music")
-    if(serverQueue) return message.channel.send("There is nothing playing")
+    if(!serverQueue) return message.channel.send("There is nothing playing")
     serverQueue.connection.dispatcher.end()
     message.channel.send("I have skipped the music for you")
     return undefined
