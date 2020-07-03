@@ -141,7 +141,7 @@ bot.on('message', async message => {
     if(!permissions.has('CONNECT')) return message.channel.send("I don\'t have permissions to connect to the voice channel")
     if(!permissions.has('SPEAK')) return message.channel.send("I don\'t have permissions to speak in the channel")
 
-    const songInfo = await ytdl.getInfo(args[1])
+    const songInfo = await ytdl.getInfo(args[0])
     const song = {
       title: songInfo.title,
       url: songInfo.video_url
