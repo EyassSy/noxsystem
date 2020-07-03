@@ -1,4 +1,4 @@
-const {Collection, Discord, Message, Client} = require('discord.js');
+const {Collection, Discord, Message, Client, Util} = require('discord.js');
 const fs = require('fs');
 const bot = new Client({ disableEveryone: true }) 
 const config = require('./config.json');
@@ -143,7 +143,7 @@ bot.on('message', async message => {
 
     const songInfo = await ytdl.getInfo(args[1])
     const song = {
-      title: songInfo.title,
+      title: Util.escapeMarkdown(songInfo.title),
       url: songInfo.video_url
     }
 
@@ -174,19 +174,56 @@ bot.on('message', async message => {
     return message.channel.send(`**${song.title}** has been added to the queue`)
   }
   return undefined
-  } else if (message.content.startsWith(`${prefix}stop`)) {
+  } else if(message.content.startsWith(`${prefix}stop`)) {
     if(!message.member.voice.channel) return message.channel.send("You need to be in a voice channel to stop the music")
     if(!serverQueue) return message.channel.send("There is nothing playing")
     serverQueue.songs = []
     serverQueue.connection.dispatcher.end()
     message.channel.send("I have stoped the music for you")
     return undefined
-  } else if (message.content.startsWith(`${prefix}skip`)) {
+  } else if(message.content.startsWith(`${prefix}skip`)) {
     if(!message.member.voice.channel) return message.channel.send("You have to be in a voice channel to skip the music")
     if(!serverQueue) return message.channel.send("There is nothing playing")
     serverQueue.connection.dispatcher.end()
     message.channel.send("I have skipped the music for you")
     return undefined
+   } else if(message.content.startsWith(`${prefix}volume`)) {
+     if(!message.member.voice.channel) return message.channel.send("You need to be in a voice channel to use music commands")
+     if(!serverQueue) return message.channel.send("There is nothing playing")
+     if(!args[1]) return message.channel.send(`That volume is: **${serverQueue.volume}**`)
+     if(isNaN(args[1])) return message.channel.send("That is not a vaild amount to change the volume to")
+     serverQueue.volume = args[1]
+     serverQueue.connection.dispatcher.setVolumeLogarithmic(args[1] / 5)
+     message.channel.send(`I have changed the volume to: **${args[1]}**`)
+     return undefined
+   } else if(message.content.startsWith(`${prefix}np`)) {
+     if(!serverQueue) return message.channel.send("There is nothing playing")
+     message.channel.send(`Now playing: **${serverQueue.songs[0].title}**`)
+     return undefined
+   } else if(message.content.startsWith(`${prefix}queue`)) {
+     if(!serverQueue) return message.channel.send("There is nothing playing")
+     message.channel.send(`
+__**Song Queue:**__
+${serverQueue.songs.Map(song => `**-** ${song.title}`).join('\n')}
+
+**Now playing:** ${serverQueue.songs[0].title}
+        `, { split: true })
+        return undefined
+    } else if(message.content.startsWith(`${prefix}pause`)) {
+      if(!message.member.voice.channel) return message.channel.send("You need to be in a voice channel to use the pause command")
+      if(!serverQueue) return message.channel.send("There is nothing plaing")
+      if(!serverQueue.playing) return message.channel.send("The Music is already paused")
+      serverQueue.playing = false
+      serverQueue.connection.dispatcher.pause()
+      message.channel.send("I have now paused the music for you")
+      return undefined
+   } else if (message.content.startsWith(`${prefix}resume`)) {
+     if(!message.member.voice.channel) return message.channel.send("You need to be in a voice channel to use the resume command")
+     if(!serverQueue) return message.channel.send("There is nothing playing")
+     serverQueue.playing = true
+     serverQueue.connection.dispatcher.resume()
+     message.channel.send("I have now resumed the music for you")
+     return undefined
    }
 })
 
@@ -208,6 +245,8 @@ function play(guild, song) {
     console.log(error)
   })
   dispatcher.setVolumeLogarithmic(serverQueue.volume / 5)
+
+  serverQueue.textChannel.send(`Start Playing: **${song.title}**`)
 }
 
 //////////////////////////////////////////////////////////////////
