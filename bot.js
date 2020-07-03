@@ -1,7 +1,7 @@
 const {Collection, Discord, Message, Client, Util} = require('discord.js');
 const fs = require('fs');
 const bot = new Client({ disableEveryone: true }) 
-const youtube = new Youtube(process.env.GOOGLE_API_KEY)
+const youtube = new YouTube(process.env.GOOGLE_API_KEY)
 const config = require('./config.json');
 const prefix = config.prefix;
 const token = config.token;
