@@ -63,7 +63,7 @@ ${prefix}avatar : Get your own or someone else's avatar
 
 \`Moderation Commands\` ✨
 
-${prefix}giveaway : ${prefix}}giveaway <time> <channel id> <prize>
+${prefix}giveaway : ${prefix}giveaway <time> <channel id> <prize>
 ${prefix}clear : deletes multiple messages
 ${prefix}ban : to ban a member from the server
 ${prefix}kick : to kick a member from the server
@@ -97,7 +97,7 @@ ${prefix}dm : to make me send a message to someone in privite
           
           \`Moderation Commands\` ✨
 
-          ${prefix}giveaway : ${prefix}}giveaway <time> <channel id> <prize>
+          ${prefix}giveaway : ${prefix}giveaway <time> <channel id> <prize>
           ${prefix}clear : deletes multiple messages
           ${prefix}ban : to ban a member from the server
           ${prefix}kick : to kick a member from the server
