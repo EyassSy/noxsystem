@@ -1,16 +1,22 @@
 const {Collection, Discord, Message, Client, Util} = require('discord.js');
 const fs = require('fs');
 const bot = new Client({ disableEveryone: true }) 
-const YouTube = require('simple-youtube-api')
+const youtube = new YouTube(process.env.GOOGLE_API_KEY)
 const config = require('./config.json');
 const prefix = config.prefix;
 const token = config.token;
 const ytdl = require('ytdl-core')
 <<<<<<< HEAD
+<<<<<<< HEAD
 const YouTube = require('simple-youtube-api')
 =======
 const youtube = new YouTube(process.env.GOOGLE_API_KEY)
 >>>>>>> parent of 9e61f81... Revert "Update bot.js"
+=======
+
+const YouTube = require('simple-youtube-api')
+
+>>>>>>> parent of 56cd088... Update bot.js
 const queue = new Map()
 const ms = require('ms');
 const { connect } = require('http2');
