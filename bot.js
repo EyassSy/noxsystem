@@ -174,14 +174,14 @@ bot.on('message', async message => {
     return message.channel.send(`**${song.title}** has been added to the queue`)
   }
   return undefined
-  } else if(message.content.startsWith(`${prefix}stop`)) {
+  } else if (message.content.startsWith(`${prefix}stop`)) {
     if(!message.member.voice.channel) return message.channel.send("You need to be in a voice channel to stop the music")
     if(!serverQueue) return message.channel.send("There is nothing playing")
     serverQueue.songs = []
     serverQueue.connection.dispatcher.end()
     message.channel.send("I have stoped the music for you")
     return undefined
-  } else if(message.content.startsWith(`${prefix}skip`)) {
+  } else if (message.content.startsWith(`${prefix}skip`)) {
     if(!message.member.voice.channel) return message.channel.send("You have to be in a voice channel to skip the music")
     if(!serverQueue) return message.channel.send("There is nothing playing")
     serverQueue.connection.dispatcher.end()
