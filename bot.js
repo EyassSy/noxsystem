@@ -48,6 +48,7 @@ bot.on("message", message => {
 ${prefix}help : to see all the available commands
 ${prefix}ping : shows the bot's ping
 ${prefix}avatar : Get your own or someone else's avatar
+${prefix}emoji : shows all the available emojis in the server
 
 
 
@@ -91,7 +92,8 @@ ${prefix}np : shows the current playing song name
           ${prefix}help : to see all the available commands
           ${prefix}ping : shows the bot's ping
           ${prefix}avatar : Get your own or someone else's avatar
-          
+          ${prefix}emoji : shows all the available emojis in the server
+
           
           
           \`Moderation Commands\` ✨
