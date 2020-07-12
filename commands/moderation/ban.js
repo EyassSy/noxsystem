@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: "ban",
-    description: "Kicks a member from the server",
+    description: "bans a member from the server",
 
     async run (client, message, args) {
 
