@@ -37,9 +37,9 @@ bot.on("message", async message => {
   }
 })
 
-bot.on("guildMemberAdd", member => {
-  var role = member.guild.roles.find("id", "667441892522459146");
-  member.addRole(role);
+ 
+client.on("guildMemberAdd", member =>{
+  member.roles.add(member.guild.roles.cache.find(role => role.name == "Nox"), "auto added.");
 })
 
 //////////////////////////////////////////////////////////////////
