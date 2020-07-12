@@ -36,6 +36,12 @@ bot.on("message", async message => {
       }
   }
 })
+
+bot.on("guildMemberAdd", member => {
+  var role = member.guild.roles.find("id", "667441892522459146");
+  member.addRole(role);
+})
+
 //////////////////////////////////////////////////////////////////
 bot.on("message", message => {
   if (message.author.bot) return;
