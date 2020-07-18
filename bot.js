@@ -264,6 +264,7 @@ function play(guild, song) {
 }
 //////////////////////////////////////////////////////////////////
 
+bot.on('message', async message => {
 if (message.startsWith(prefix + 'serverinfo')) {
   let icon = message.guild.iconURL({size: 2048});
     
@@ -320,6 +321,7 @@ if (message.startsWith(prefix + 'serverinfo')) {
   .addField(`Channels [${totalchan}]`, `Text: ${text} \nVoice: ${vc} \nCategory: ${category}`)
   message.channel.send(embed);
 }
+});
 
 //////////////////////////////////////////////////////////////////
 
