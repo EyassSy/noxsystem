@@ -3,6 +3,7 @@ const fs = require('fs');
 const bot = new Client({ disableEveryone: true }) 
 const YouTube = require('simple-youtube-api')
 const config = require('./config.json');
+const welcome = require('./welcome')
 const prefix = config.prefix;
 const token = config.token;
 const ytdl = require('ytdl-core')
