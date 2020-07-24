@@ -43,7 +43,7 @@ bot.on("guildMemberAdd", member =>{
   member.roles.add(member.guild.roles.cache.find(role => role.name == "Nox"), "auto added.");
 })
 
-bot.on(guildMemberAdd, async (member) => {
+bot.on("guildMemberAdd", async (member) => {
 
   let guild = bot.guilds.cache.get("613504635956887562"); // server's id
   let channel = bot.channels.cache.get("735947262101815809"); //channel id
@@ -59,6 +59,7 @@ bot.on(guildMemberAdd, async (member) => {
     .setTitle(`${emoji} Welcome! ${emoji}`)
     .setImage('https://cdn.dribbble.com/users/5320949/screenshots/11612135/logo.gif')
     .setDescription(`${member.user}, welcome to the server ${guild.name}! we currently have ${member.guild.memberCount} members.`)
+    .setField('Channels', 'follow the server rules <#736111712129908816> ')
     .setThumbnail(member.user.displayAvatarURL({ dynamic: true, format: "png", size: 1024}))
     .setFooter('User ID: ' + member.user.id)
     .setTimestamp();
