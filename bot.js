@@ -43,16 +43,6 @@ bot.on("guildMemberAdd", member =>{
   member.roles.add(member.guild.roles.cache.find(role => role.name == "Nox"), "auto added.");
 })
 
-bot.on("guildMemberAdd", member => {
-  const welcomeChannel = member.guild.channels.cache.find(channel => channel.name === 'welcome')
-  welcomeChannel.send(`Welcome! ${member}`)
-})
-
-bot.on("guildMemberRemove", member => {
-  const welcomeChannel = member.guild.channels.cache.find(channel => channel.name === 'goodbye')
-  welcomeChannel.send(`Goodbye! ${member}`)
-})
-
 //////////////////////////////////////////////////////////////////
 bot.on("message", message => {
   if (message.author.bot) return;
