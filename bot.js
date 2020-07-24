@@ -55,7 +55,7 @@ if (message.content === '-botinvite') {
 bot.on('message', luxy => {
 if(luxy.author.bot) return;
 if(luxy.content === '-botinvite') {
-luxy.channel.send('<a:x2:669825119492767745> **-** **Check your dms**');
+luxy.channel.send(':9_: **Check your dms**');
 }
 });
 
@@ -72,6 +72,8 @@ ${prefix}help : to see all the available commands
 ${prefix}ping : shows the bot's ping
 ${prefix}avatar : Get your own or someone else's avatar
 ${prefix}emoji : shows all the available emojis in the server
+${prefix}botinvite : to get the bot's invite link
+
 
 
 
@@ -116,6 +118,7 @@ ${prefix}np : shows the current playing song name
           ${prefix}ping : shows the bot's ping
           ${prefix}avatar : Get your own or someone else's avatar
           ${prefix}emoji : shows all the available emojis in the server
+          ${prefix}botinvite : to get the bot's invite link
 
           
           
