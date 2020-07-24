@@ -55,7 +55,7 @@ if (message.content === '-botinvite') {
 bot.on('message', luxy => {
 if(luxy.author.bot) return;
 if(luxy.content === '-botinvite') {
-luxy.channel.send(':9_: **Check your dms**');
+luxy.channel.send('**Check your dms** 📥');
 }
 });
 
