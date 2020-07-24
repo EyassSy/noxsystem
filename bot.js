@@ -37,11 +37,27 @@ bot.on("message", async message => {
       }
   }
 })
-
  
 bot.on("guildMemberAdd", member =>{
   member.roles.add(member.guild.roles.cache.find(role => role.name == "Nox"), "auto added.");
 })
+
+bot.on('message', message => {
+  if (true) {
+if (message.content === '-botinvite') {
+      message.author.send(' https://discord.com/oauth2/authorize?client_id=717385095547191318&scope=bot&permissions=8 | Here is my invite link :)').catch(e => console.log(e.stack));
+ 
+    }
+   }
+  });
+ 
+ 
+bot.on('message', luxy => {
+if(luxy.author.bot) return;
+if(luxy.content === '-botinvite') {
+luxy.channel.send('<a:x2:669825119492767745> **-** **Check your dms**');
+}
+});
 
 //////////////////////////////////////////////////////////////////
 bot.on("message", message => {
