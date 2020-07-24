@@ -43,6 +43,31 @@ bot.on("guildMemberAdd", member =>{
   member.roles.add(member.guild.roles.cache.find(role => role.name == "Nox"), "auto added.");
 })
 
+bot.on(guildMemberAdd, async (member) => {
+
+  let guild = bot.guilds.cache.get("613504635956887562"); // server's id
+  let channel = bot.channels.cache.get("735947262101815809"); //channel id
+  let emoji = member.guild.emojis.cache.find(emoji => emoji.name === 'Wiggly'); //emoji name
+
+  if (guild != member.guild) {
+    return console.log('New member!');
+  } else {
+
+    let embed = new Discord.MessageEmbed()
+    .setColor('#f93e54')
+    .setAuthor(member.user.tag, member.user.displayAvatarURL())
+    .setTitle(`${emoji} Welcome! ${emoji}`)
+    .setImage('https://cdn.dribbble.com/users/5320949/screenshots/11612135/logo.gif')
+    .setDescription(`${member.user}, welcome to the server ${guild.name}! we currently have ${member.guild.memberCount} members.`)
+    .setThumbnail(member.user.displayAvatarURL({ dynamic: true, format: "png", size: 1024}))
+    .setFooter('User ID: ' + member.user.id)
+    .setTimestamp();
+
+    await channel.send(embed)
+  }
+
+})
+
 //////////////////////////////////////////////////////////////////
 bot.on("message", message => {
   if (message.author.bot) return;
