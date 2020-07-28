@@ -4,7 +4,7 @@ module.exports = {
   name: "userinfo",
   description: "Get your own or someone else's avatar",
   usage: "[user mention]",
-  category: "fun",
+  category: "info",
   run: async (bot, message, args) => {
     let Embed = new MessageEmbed();
     let roles = [];
