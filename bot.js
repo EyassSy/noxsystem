@@ -72,7 +72,6 @@ ${prefix}help : to see all the available commands
 ${prefix}ping : shows the bot's ping
 ${prefix}uptime : shows for how long the bot has been online
 ${prefix}avatar : Get your own or someone else's avatar
-${prefix}userinfo : Get your own or someone else's info
 ${prefix}emoji : shows all the available emojis in the server
 ${prefix}botinvite : to get the bot's invite link
 
@@ -120,7 +119,6 @@ ${prefix}np : shows the current playing song name
           ${prefix}ping : shows the bot's ping
           ${prefix}uptime : shows for how long the bot has been online
           ${prefix}avatar : Get your own or someone else's avatar
-          ${prefix}userinfo : Get your own or someone else's info
           ${prefix}emoji : shows all the available emojis in the server
           ${prefix}botinvite : to get the bot's invite link
 
