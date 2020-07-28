@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 const { formatDate } = require("../../functions");
 module.exports = {
-  name: "avatar",
+  name: "userinfo",
   description: "Get your own or someone else's avatar",
   usage: "[user mention]",
   category: "fun",
