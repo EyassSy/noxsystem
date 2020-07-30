@@ -1,3 +1,6 @@
+const config = require('./config.json');
+const prefix = config.prefix;
+
 module.exports = {
     name: "help",
     description: "View all the commands the bot has",
