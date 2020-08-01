@@ -74,6 +74,7 @@ ${prefix}ping : shows the bot's ping
 ${prefix}uptime : shows for how long the bot has been online
 ${prefix}avatar : Get your own or someone else's avatar
 ${prefix}userinfo : Shows the information of a member/user
+${prefix}serverinfo : Shows the information of the server
 ${prefix}emoji : shows all the available emojis in the server
 ${prefix}botinvite : to get the bot's invite link
 
@@ -122,6 +123,7 @@ ${prefix}np : shows the current playing song name
           ${prefix}uptime : shows for how long the bot has been online
           ${prefix}avatar : Get your own or someone else's avatar
           ${prefix}userinfo : Shows the information of a member/user
+          ${prefix}serverinfo : Shows the information of the server
           ${prefix}emoji : shows all the available emojis in the server
           ${prefix}botinvite : to get the bot's invite link
 
