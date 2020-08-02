@@ -19,10 +19,23 @@ bot.catecories = fs.readdirSync("./commands/");
 ["command"].forEach(handler=>{ 
   require(`./handlers/${handler}`)(bot); 
 });
-bot.on('ready',()=>{ 
-  bot.user.setActivity(`${prefix}help | Nox Bot!`,{type: "STREAMING", url: 'https://twitch.tv/idk'}) 
-  console.log(`Hello! ${bot.user.username} is now online!!`) 
+
+bot.on('ready', () => {
+  console.log("Active")
+
+  setInterval(() => {
+    const statuses = [
+      `-Help`
+      `Coded by عہمہكہ إيہأسہ#1000`
+      `Im Nox :D`
+    ]
+
+    const status = statuses[Math.floor(Math.random() * statuses.length)]
+    bot.user.setActivity(status, { type: 'STREAMING', url: 'https://twitch.tv/idk' })
+    console.log('Hello! ${bot.user.username} is now online!!')
+    }, 5000)
 })
+
 bot.on("message", async message => {
   if(message.author.bot) return;
   if(message.channel.type === 'dm') return;
