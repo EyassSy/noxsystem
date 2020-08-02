@@ -21,18 +21,17 @@ bot.catecories = fs.readdirSync("./commands/");
 });
 
 bot.on('ready', () => {
-  console.log("Active")
+  console.log('Hello! ${bot.user.username} is now online!!')
 
   setInterval(() => {
     const statuses = [
-      `-Help`
-      `Coded by عہمہكہ إيہأسہ#1000`
-      `Im Nox :D`
+      `-Help`,
+      `Coded by عہمہكہ إيہأسہ#1000`,
+      `Im Nox :D`,
     ]
 
     const status = statuses[Math.floor(Math.random() * statuses.length)]
     bot.user.setActivity(status, { type: 'STREAMING', url: 'https://twitch.tv/idk' })
-    console.log('Hello! ${bot.user.username} is now online!!')
     }, 5000)
 })
 
