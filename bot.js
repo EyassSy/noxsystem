@@ -21,7 +21,7 @@ bot.catecories = fs.readdirSync("./commands/");
 });
 
 bot.on('ready', () => {
-  console.log('Hello! ${bot.user.username} is now online!!')
+  console.log(`Hello! ${bot.user.username} is now online!!`)
 
   setInterval(() => {
     const statuses = [
