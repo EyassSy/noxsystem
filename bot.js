@@ -287,7 +287,7 @@ ${serverQueue.songs.Map(song => `**-** ${song.title}`).join('\n')}
      return undefined
    } else if (message.content.startsWith(`${prefix}loop`)) {
      if(!message.member.voice.channel) return message.channel.send('You need to be in a voice channel to use this command')
-     if(!!serverQueue) return message.channel.send('There is nothing playing.')
+     if(!serverQueue) return message.channel.send('There is nothing playing.')
 
      serverQueue.loop = !serverQueue.loop
 
