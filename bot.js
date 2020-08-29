@@ -107,6 +107,7 @@ ${prefix}poll : Create a simple yes or no poll
 \`Music Commands\` 🎵
 ${prefix}play : plays music
 ${prefix}stop : stop playing music
+${prefix}loop : repeats the song
 ${prefix}skip : skips the current playing song
 ${prefix}pause : pauses playing music
 ${prefix}resume : resume playing music
@@ -155,6 +156,7 @@ ${prefix}np : shows the current playing song name
           \`Music Commands\` 🎵
           ${prefix}play : plays music
           ${prefix}stop : stop playing music
+          ${prefix}loop : repeats the song
           ${prefix}skip : skips the current playing song
           ${prefix}pause : pauses playing music
           ${prefix}resume : resume playing music
