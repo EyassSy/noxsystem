@@ -25,7 +25,7 @@ bot.on('ready', () => {
 
   setInterval(() => {
     const statuses = [
-      `-Help`,
+      `.Help`,
       `Coded by عہمہكہ إيہأسہ`,
       `Im Nox :D`,
       `v2.2`
