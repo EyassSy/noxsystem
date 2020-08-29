@@ -286,8 +286,8 @@ ${serverQueue.songs.Map(song => `**-** ${song.title}`).join('\n')}
      message.channel.send("I have now resumed the music for you ⏯️")
      return undefined
    } else if (message.content.startsWith(`${prefix}loop`)) {
-     if (!message.member.voice.channel) return message.channel.send('You need to be in a voice channel to use this command')
-     if (!!serverQueue) return message.channel.send('There is nothing playing.')
+     if(!message.member.voice.channel) return message.channel.send('You need to be in a voice channel to use this command')
+     if(!!serverQueue) return message.channel.send('There is nothing playing.')
 
      serverQueue.loop = !serverQueue.loop
 
@@ -303,7 +303,7 @@ function play(guild, song) {
   }
   const dispatcher = serverQueue.connection.play(ytdl(song.url))
   .on('finish', () => {
-    if (!serverQueue.loop) serverQueue.songs.shift()
+    if(!serverQueue.loop) serverQueue.songs.shift()
     play(guild, serverQueue.songs[0])
   })
   .on('error', error => {
