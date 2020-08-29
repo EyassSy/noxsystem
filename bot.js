@@ -28,7 +28,7 @@ bot.on('ready', () => {
       `-Help`,
       `Coded by عہمہكہ إيہأسہ`,
       `Im Nox :D`,
-      `v2.1`
+      `v2.2`
     ]
 
     const status = statuses[Math.floor(Math.random() * statuses.length)]
@@ -93,7 +93,6 @@ ${prefix}botinvite : to get the bot's invite link
 
 
 
-
 \`Moderation Commands\` ✨
 ${prefix}giveaway : ${prefix}giveaway <time> <channel id> <prize>
 ${prefix}clear : deletes multiple messages
@@ -113,6 +112,10 @@ ${prefix}pause : pauses playing music
 ${prefix}resume : resume playing music
 ${prefix}volume : changes the music volume
 ${prefix}np : shows the current playing song name
+
+\`Owner Commands\` 👑
+${prefix}restart : restarts the bot
+
   `
         )
         .then(e => {
@@ -142,7 +145,7 @@ ${prefix}np : shows the current playing song name
           ${prefix}botinvite : to get the bot's invite link
 
           
-          
+
           \`Moderation Commands\` ✨
           ${prefix}giveaway : ${prefix}giveaway <time> <channel id> <prize>
           ${prefix}clear : deletes multiple messages
@@ -162,6 +165,9 @@ ${prefix}np : shows the current playing song name
           ${prefix}resume : resume playing music
           ${prefix}volume : changes the music volume
           ${prefix}np : shows the current playing song name
+          
+          \`Owner Commands\` 👑
+          ${prefix}restart : restarts the bot
         `
           )
         .then(e => {
