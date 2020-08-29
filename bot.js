@@ -28,6 +28,7 @@ bot.on('ready', () => {
       `-Help`,
       `Coded by عہمہكہ إيہأسہ`,
       `Im Nox :D`,
+      `v2.1`
     ]
 
     const status = statuses[Math.floor(Math.random() * statuses.length)]
@@ -214,7 +215,8 @@ bot.on('message', async message => {
         connection: null,
         songs: [],
         volume: 5,
-        playing: true
+        playing: true,
+        loop: false,
       }
       queue.set(message.guild.id, queueConstruct)
       queueConstruct.songs.push(song) 
@@ -281,6 +283,13 @@ ${serverQueue.songs.Map(song => `**-** ${song.title}`).join('\n')}
      serverQueue.connection.dispatcher.resume()
      message.channel.send("I have now resumed the music for you ⏯️")
      return undefined
+   } else if (message.content.startsWith(`${prefix}loop`)) {
+     if (!message.member.voice.channel) return message.channel.send('You need to be in a voice channel to use this command')
+     if (!!serverQueue) return message.channel.send('There is nothing playing.')
+
+     serverQueue.loop = !serverQueue.loop
+
+     return message.channel.send(`I have now ${serverQueue.loop ? `**Enabled**` : `**Disabled**`} loop.`)
    }
 })
 function play(guild, song) {
@@ -292,7 +301,7 @@ function play(guild, song) {
   }
   const dispatcher = serverQueue.connection.play(ytdl(song.url))
   .on('finish', () => {
-    serverQueue.songs.shift()
+    if (!serverQueue.loop) serverQueue.songs.shift()
     play(guild, serverQueue.songs[0])
   })
   .on('error', error => {
