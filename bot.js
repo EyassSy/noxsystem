@@ -25,10 +25,10 @@ bot.on('ready', () => {
 
   setInterval(() => {
     const statuses = [
-      `.Help`,
+      `-Help`,
       `Coded by عہمہكہ إيہأسہ`,
       `Im Nox :D`,
-      `v2.2`
+      `v2.3`
     ]
 
     const status = statuses[Math.floor(Math.random() * statuses.length)]
