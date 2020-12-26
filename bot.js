@@ -11,10 +11,12 @@ const { connection } = require('mongoose');
 const dateformat = require('dateformat');
 const { error } = require('console');
 const { constants } = require('buffer');
-const {prefix, token, GOOGLE_API_KEY } = require('./config.json');
+const {prefix, GOOGLE_API_KEY } = require('./config.json');
+const token = process.env.BOT_TOKEN;
 bot.commands = new Collection();
 bot.aliases = new Collection();
 bot.catecories = fs.readdirSync("./commands/");
+require("dotenv").config();
 ["command"].forEach(handler=>{ 
   require(`./handlers/${handler}`)(bot); 
 });
