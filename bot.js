@@ -1,9 +1,10 @@
-const {Collection, Discord, Message, Client, Util} = require('discord.js');
+const {Collection, Discord, Message, Client, Util, GuildMember} = require('discord.js');
 const fs = require('fs');
 const bot = new Client({ disableEveryone: true }) 
 const YouTube = require('simple-youtube-api')
 const ytdl = require('ytdl-core')
 const queue = new Map()
+const memberCounter = require('./counters/member-counter');
 const ms = require('ms');
 const youtube = new YouTube ("AIzaSyBtXM5KMlw7nITyi_kDDHkB-z-TeKYLOlg");
 const { connect } = require('http2');
@@ -11,26 +12,26 @@ const { connection } = require('mongoose');
 const dateformat = require('dateformat');
 const { error } = require('console');
 const { constants } = require('buffer');
-const {prefix, GOOGLE_API_KEY } = require('./config.json');
-const token = process.env.BOT_TOKEN;
+const {prefix, token, GOOGLE_API_KEY } = require('./config.json');
 bot.commands = new Collection();
 bot.aliases = new Collection();
+bot.memberCounter = new Collection();
 bot.catecories = fs.readdirSync("./commands/");
-require("dotenv").config();
 ["command"].forEach(handler=>{ 
   require(`./handlers/${handler}`)(bot); 
 });
 
 bot.on('ready', () => {
     console.log(`Hello! ${bot.user.username} is now online!!`)
+    memberCounter(bot);
 
   
     setInterval(() => {
       const statuses = [
         `-Help`,
-        `Coded by !┌|*ﾟ 3̷v̷z̷  ｡ﾟ|┘#0139`,
+        `Coded by 3vz`,
         `Im Nox :D`,
-        `v3.0`
+        `v3.5`
       ]
   
       const status = statuses[Math.floor(Math.random() * statuses.length)]
@@ -53,8 +54,12 @@ bot.on('ready', () => {
     }
   })
   
-  bot.on("guildMemberAdd", member =>{
-    member.roles.add(member.guild.roles.cache.find(role => role.name == "Nox"), "auto added.");
+  bot.on('guildMemberAdd', guildMember =>{
+    let welcomeRole = guildMember.guild.roles.cache.find(role => role.name === 'Nox');
+
+
+    guildMember.roles.add(welcomeRole);
+    guildMember.guild.channels.cache.get('735947262101815809').send(`Welcome <@${guildMember.user.id}> to our server!`)
   })
 
   bot.on('message', message => {
@@ -176,7 +181,7 @@ bot.on('ready', () => {
     }
   });
   
-//////////////////////////////////////////////////////////////////
+  +//////////////////////////////////////////////////////////////////
   
   bot.on('message', async message => {
     if(message.author.bot) return
