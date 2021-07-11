@@ -12,7 +12,8 @@ const { connection } = require('mongoose');
 const dateformat = require('dateformat');
 const { error } = require('console');
 const { constants } = require('buffer');
-const {prefix, token, GOOGLE_API_KEY } = require('./config.json');
+const prefix = require('-')
+//const {prefix, token, GOOGLE_API_KEY } = require('./config.json');
 bot.commands = new Collection();
 bot.aliases = new Collection();
 bot.memberCounter = new Collection();
@@ -316,4 +317,4 @@ bot.on('ready', () => {
   
   //////////////////////////////////////////////////////////////////
   
-    bot.login(token)
+    bot.login(process.env.Token)
